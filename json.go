@@ -17,11 +17,11 @@ func ReadJson(r *http.Request, data interface{}) bool {
 }
 
 func WriteJson(w http.ResponseWriter, data interface{}) {
-	prefix := []byte(")]}',\n")
+	// prefix := []byte(")]}',\n")
 	if d, err := json.Marshal(data); err != nil {
 		log.Printf("Error marshalling json: %v", err)
 	} else {
-		d = append(prefix, d...)
+		// d = append(prefix, d...)
 		w.Header().Set("Content-Length", strconv.Itoa(len(d)))
 		w.Header().Set("Content-Type", "application/json")
 		w.Write(d)
